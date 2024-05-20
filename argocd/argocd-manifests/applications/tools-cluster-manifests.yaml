@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: tools-manifests
+  name: tools-cluster-manifests
   namespace: argocd
 spec:
   project: default
