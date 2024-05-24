@@ -1,0 +1,6 @@
+- chart: cert-manager
+  namespace: cert-manager
+  releaseName: cert-manager
+  repoUrl: https://charts.jetstack.io
+  valueFile: cert-manager
+  version: 1.14.2
