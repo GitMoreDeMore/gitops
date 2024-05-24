@@ -11,7 +11,7 @@ spec:
               repoURL: 'https://github.com/GitMoreDeMore/gitops.git'
               revision: main
               files:
-                - path: argocd/clusters/helm/charts/bootstrap.yaml
+                - path: argocd/helm/charts/bootstrap.yaml
         - list:
             elements:
               - cluster: tooling
@@ -30,7 +30,7 @@ spec:
             ignoreMissingValueFiles: true
             releaseName: '{{releaseName}}'
             valueFiles:
-              - '$values/argocd/clusters/helm/values/{{valueFile}}.yaml'
+              - '$values/argocd/helm/values/{{valueFile}}.yaml'
               - '$values/argocd/clusters/{{cluster}}/helm/values/{{valueFile}}.yaml'
         - repoURL: 'https://github.com/GitMoreDeMore/gitops.git'
           targetRevision: main
