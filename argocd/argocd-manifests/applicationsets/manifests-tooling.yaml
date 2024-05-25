@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: manifests-tooling
+  namespace: argocd
+spec:
+  generators:
+  - list:
+      elements:
+        - cluster: tooling
+          url: https://kubernetes.default.svc
+          environment: prod
+  template:
+    metadata:
+      name: '{{cluster}}-manifests'
+    spec:
+      project: '{{environment}}'
+      sources:
+        - repoURL: 'https://github.com/GitMoreDeMore/gitops.git'
+          targetRevision: main
+          path: argocd/clusters/{{cluster}}/manifests/
+      destination:
+        server: '{{url}}'
+      syncPolicy:
+        automated:
+          prune: true
+        syncOptions:
+          - CreateNamespace=true
+          - ServerSideApply=true
